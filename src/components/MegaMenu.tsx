@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ProductCard from './ProductCard';
 
@@ -12,21 +13,29 @@ const MegaMenu = ({ menuType }: MegaMenuProps) => {
         return {
           sections: [
             {
-              title: 'Tablet Mounts',
-              items: ['Floor Stands', 'Kiosks & Desk Stands', 'Clamp Mounts', 'Wall Mounts', 'Tablet Cases', 'Built for OtterBox Cases']
+              title: 'Mounting Solutions',
+              items: ['Floor Stands', 'Wall Mounts', 'Desk Stands', 'Clamp Mounts', 'Ceiling Mounts']
             },
             {
-              title: 'Display Solutions',
-              items: ['Charging Stations', 'Display Mounts', 'Laptop Mounts', 'Commercial Kitchen Mounts']
+              title: 'Protective Cases',
+              items: ['Tablet Cases', 'Rugged Cases', 'Built for OtterBox', 'Custom Cases']
+            },
+            {
+              title: 'Display & Kiosks',
+              items: ['Digital Signage', 'Interactive Kiosks', 'POS Stands', 'Rolling Kiosks']
+            },
+            {
+              title: 'Charging Solutions',
+              items: ['Charging Stations', 'Power Banks', 'Wireless Chargers', 'Multi-Device Hubs']
             }
           ],
           products: [
-            { name: 'Floor Stands', image: '/api/placeholder/150/150', category: 'Tablet Mounts' },
-            { name: 'Kiosks & Desk Stands', image: '/api/placeholder/150/150', category: 'Tablet Mounts' },
-            { name: 'Clamp Mounts', image: '/api/placeholder/150/150', category: 'Tablet Mounts' },
-            { name: 'Wall Mounts', image: '/api/placeholder/150/150', category: 'Tablet Mounts' },
-            { name: 'Tablet Cases', image: '/api/placeholder/150/150', category: 'Tablet Mounts' },
-            { name: 'Built for OtterBox Cases', image: '/api/placeholder/150/150', category: 'Tablet Mounts' }
+            { name: 'Premium Floor Stand', image: '/api/placeholder/150/150', category: 'Best Seller' },
+            { name: 'Secure Wall Mount', image: '/api/placeholder/150/150', category: 'Most Popular' },
+            { name: 'Flexible Desk Stand', image: '/api/placeholder/150/150', category: 'New Arrival' },
+            { name: 'Heavy Duty Case', image: '/api/placeholder/150/150', category: 'Featured' },
+            { name: 'Smart Kiosk Pro', image: '/api/placeholder/150/150', category: 'Premium' },
+            { name: 'Fast Charging Hub', image: '/api/placeholder/150/150', category: 'Trending' }
           ]
         };
       case 'Devices':
@@ -107,6 +116,10 @@ const MegaMenu = ({ menuType }: MegaMenuProps) => {
           {/* Product Grid */}
           {content.products.length > 0 && (
             <div className="lg:col-span-2 animate-in fade-in slide-in-from-right-3 duration-300 delay-150">
+              <div className="mb-4">
+                <h3 className="text-gray-900 font-semibold text-lg mb-2">Featured Products</h3>
+                <p className="text-gray-500 text-sm">Our most popular and recommended solutions</p>
+              </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                 {content.products.map((product, index) => (
                   <div
