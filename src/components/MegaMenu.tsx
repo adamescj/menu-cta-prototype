@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ProductCard from './ProductCard';
 
@@ -71,22 +70,30 @@ const MegaMenu = ({ menuType }: MegaMenuProps) => {
   const content = getMenuContent();
 
   return (
-    <div className="absolute top-full left-0 w-screen max-w-4xl bg-white shadow-2xl border border-gray-100 rounded-2xl overflow-visible z-50 mt-2 -ml-8">
+    <div className="absolute top-full left-0 w-screen max-w-4xl bg-white shadow-2xl border border-gray-100 rounded-2xl overflow-visible z-50 mt-2 -ml-8 animate-in fade-in slide-in-from-top-2 duration-200">
       <div className="px-8 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Navigation Sections */}
           <div className="lg:col-span-1 space-y-8">
             {content.sections.map((section, index) => (
-              <div key={index}>
+              <div 
+                key={index} 
+                className="animate-in fade-in slide-in-from-left-3 duration-300"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
                 <h3 className="text-[#ff6363] font-semibold text-sm uppercase tracking-wide mb-4">
                   {section.title}
                 </h3>
                 <ul className="space-y-3">
                   {section.items.map((item, itemIndex) => (
-                    <li key={itemIndex}>
+                    <li 
+                      key={itemIndex}
+                      className="animate-in fade-in slide-in-from-left-2 duration-200"
+                      style={{ animationDelay: `${(index * 100) + (itemIndex * 50)}ms` }}
+                    >
                       <a
                         href="#"
-                        className="text-gray-600 hover:text-[#ff6363] text-sm transition-colors duration-200 block py-1 hover:pl-2 transition-all"
+                        className="text-gray-600 hover:text-[#ff6363] text-sm transition-all duration-200 block py-1 hover:pl-2 hover:scale-105"
                       >
                         {item}
                       </a>
@@ -99,15 +106,20 @@ const MegaMenu = ({ menuType }: MegaMenuProps) => {
 
           {/* Product Grid */}
           {content.products.length > 0 && (
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 animate-in fade-in slide-in-from-right-3 duration-300 delay-150">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                 {content.products.map((product, index) => (
-                  <ProductCard
+                  <div
                     key={index}
-                    name={product.name}
-                    image={product.image}
-                    category={product.category}
-                  />
+                    className="animate-in fade-in scale-in-90 duration-200"
+                    style={{ animationDelay: `${200 + (index * 75)}ms` }}
+                  >
+                    <ProductCard
+                      name={product.name}
+                      image={product.image}
+                      category={product.category}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
