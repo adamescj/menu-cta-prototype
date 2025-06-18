@@ -27,7 +27,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <div
                 key={item.name}
@@ -36,7 +36,7 @@ const Header = () => {
                 onMouseLeave={() => setActiveMenu(null)}
               >
                 <button
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  className={`px-4 py-3 rounded-md text-sm font-medium transition-colors duration-200 ${
                     activeMenu === item.name
                       ? 'text-[#ff6363] bg-gray-50'
                       : 'text-gray-700 hover:text-[#ff6363] hover:bg-gray-50'

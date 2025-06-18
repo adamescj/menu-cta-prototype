@@ -71,22 +71,22 @@ const MegaMenu = ({ menuType }: MegaMenuProps) => {
   const content = getMenuContent();
 
   return (
-    <div className="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-200 rounded-b-2xl overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-screen max-w-6xl bg-white shadow-2xl border border-gray-100 rounded-2xl overflow-visible z-50 mt-2">
+      <div className="px-8 py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Navigation Sections */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 space-y-8">
             {content.sections.map((section, index) => (
-              <div key={index} className="mb-6">
-                <h3 className="text-[#ff6363] font-semibold text-sm uppercase tracking-wide mb-3">
+              <div key={index}>
+                <h3 className="text-[#ff6363] font-semibold text-sm uppercase tracking-wide mb-4">
                   {section.title}
                 </h3>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {section.items.map((item, itemIndex) => (
                     <li key={itemIndex}>
                       <a
                         href="#"
-                        className="text-gray-600 hover:text-[#ff6363] text-sm transition-colors duration-200 block py-1"
+                        className="text-gray-600 hover:text-[#ff6363] text-sm transition-colors duration-200 block py-1 hover:pl-2 transition-all"
                       >
                         {item}
                       </a>
@@ -100,7 +100,7 @@ const MegaMenu = ({ menuType }: MegaMenuProps) => {
           {/* Product Grid */}
           {content.products.length > 0 && (
             <div className="lg:col-span-2">
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                 {content.products.map((product, index) => (
                   <ProductCard
                     key={index}
