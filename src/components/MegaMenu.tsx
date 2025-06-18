@@ -71,7 +71,7 @@ const MegaMenu = ({ menuType }: MegaMenuProps) => {
   const content = getMenuContent();
 
   return (
-    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-screen max-w-6xl bg-white shadow-2xl border border-gray-100 rounded-2xl overflow-visible z-50 mt-2">
+    <div className="absolute top-full left-0 w-screen max-w-4xl bg-white shadow-2xl border border-gray-100 rounded-2xl overflow-visible z-50 mt-2 -ml-8">
       <div className="px-8 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Navigation Sections */}
