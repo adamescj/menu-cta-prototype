@@ -1,11 +1,35 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, User, ShoppingCart, Menu, X } from 'lucide-react';
 import MegaMenu from './MegaMenu';
 
 const Header = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeout) {
+        clearTimeout(hoverTimeout);
+      }
+    };
+  }, [hoverTimeout]);
+
+  const handleMenuEnter = (itemName: string) => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+    setActiveMenu(itemName);
+  };
+
+  const handleMenuLeave = () => {
+    const timeout = setTimeout(() => {
+      setActiveMenu(null);
+    }, 200);
+    setHoverTimeout(timeout);
+  };
 
   const navItems = [
     { name: 'Categories', hasDropdown: true },
@@ -32,8 +56,8 @@ const Header = () => {
               <div
                 key={item.name}
                 className="relative"
-                onMouseEnter={() => item.hasDropdown && setActiveMenu(item.name)}
-                onMouseLeave={() => setActiveMenu(null)}
+                onMouseEnter={() => item.hasDropdown && handleMenuEnter(item.name)}
+                onMouseLeave={handleMenuLeave}
               >
                 <button
                   className={`px-4 py-3 rounded-md text-sm font-medium transition-colors duration-200 ${
@@ -45,7 +69,17 @@ const Header = () => {
                   {item.name}
                 </button>
                 {item.hasDropdown && activeMenu === item.name && (
-                  <MegaMenu menuType={item.name} />
+                  <div 
+                    onMouseEnter={() => {
+                      if (hoverTimeout) {
+                        clearTimeout(hoverTimeout);
+                        setHoverTimeout(null);
+                      }
+                    }}
+                    onMouseLeave={handleMenuLeave}
+                  >
+                    <MegaMenu menuType={item.name} />
+                  </div>
                 )}
               </div>
             ))}

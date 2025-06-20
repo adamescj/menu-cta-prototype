@@ -1,15 +1,14 @@
-
 import React from 'react';
 import Header from '../components/Header';
-import HeroSection from '../components/HeroSection';
-import CategorySection from '../components/CategorySection';
+import BrowseSection from '../components/BrowseSection';
+import DisplayMountsSection from '../components/DisplayMountsSection';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Header />
-      <HeroSection />
-      <CategorySection />
+      <BrowseSection />
+      <DisplayMountsSection />
     </div>
   );
 };
